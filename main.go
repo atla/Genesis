@@ -12,6 +12,9 @@ func main() {
 
 	var entity = ent.NewBaseEntity()
 	var complexEntity = ent.NewComplexEntity()
+	var livingEntity1 = ent.NewLivingEntity([]ent.Behaviour{
+		ent.NewStarvingBehaviour(),
+	})
 
 	complexEntity.AddEntity(entity)
 
@@ -23,6 +26,7 @@ func main() {
 	}
 	simulation.AddEntity(entity)
 	simulation.AddEntity(complexEntity)
+	simulation.AddEntity(livingEntity1)
 
 	simulation.Start()
 

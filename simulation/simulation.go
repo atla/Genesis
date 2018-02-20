@@ -16,7 +16,7 @@ type Simulation struct {
 	ticker   *time.Ticker
 	Params   *Params
 	running  bool
-	entities []ent.GenesisEntity
+	entities []ent.Entity
 }
 
 // Start ... starts the server with a ticking delay of 5 milliseconds
@@ -46,7 +46,7 @@ func (simulation *Simulation) runFor(duration time.Duration) {
 }
 
 // AddEntity ... add an entity to the simulation
-func (simulation *Simulation) AddEntity(entity ent.GenesisEntity) {
+func (simulation *Simulation) AddEntity(entity ent.Entity) {
 	simulation.entities = append(simulation.entities, entity)
 }
 
