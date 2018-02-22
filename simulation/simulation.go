@@ -11,12 +11,22 @@ type Params struct {
 	TickIntervalMilliseconds time.Duration
 }
 
+// NewParams ... creates a new params object
+func NewParams(tick time.Duration) *Params {
+	return &Params{tick}
+}
+
 // Simulation ... server struct
 type Simulation struct {
 	ticker   *time.Ticker
 	Params   *Params
 	running  bool
 	entities []ent.Entity
+}
+
+// NewSimulation ... returns a new simulation object
+func NewSimulation(params *Params) *Simulation {
+	return &Simulation{Params: params}
 }
 
 // Start ... starts the server with a ticking delay of 5 milliseconds

@@ -9,9 +9,11 @@ import (
 
 // BaseEntity ... standard entity used by eveyy unit in the system
 type BaseEntity struct {
-	id    string
-	kind  string
-	alive bool
+	id          string
+	description string
+	kind        string
+	alive       bool
+	position    Vector
 }
 
 // NewBaseEntity ... creates and returns a new base entity instance
@@ -32,7 +34,16 @@ func (be *BaseEntity) ID() string {
 	return be.id
 }
 
-// IsAlive ... asd
+// IsAlive returns a alive/dead state of the entity
 func (be *BaseEntity) IsAlive() bool {
 	return be.alive
+}
+
+// Position returns the entitites position
+func (be *BaseEntity) Position() Vector {
+	return be.position
+}
+
+func (be *BaseEntity) Description() string {
+	return be.description
 }

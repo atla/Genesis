@@ -8,14 +8,13 @@ import (
 // LivingEntity ... standard entity used by eveyy unit in the system
 type LivingEntity struct {
 	*BaseEntity
-	behaviours []Behaviour
+	Behaviours []Behaviour
 }
 
 // NewLivingEntity ... creates and returns a new base entity instance
-func NewLivingEntity(behaviours []Behaviour) *LivingEntity {
+func NewLivingEntity() *LivingEntity {
 	return &LivingEntity{
 		BaseEntity: NewBaseEntity(),
-		behaviours: behaviours,
 	}
 }
 
@@ -23,7 +22,14 @@ func NewLivingEntity(behaviours []Behaviour) *LivingEntity {
 func (le *LivingEntity) Process(time time.Time) {
 	fmt.Println("Processing living entity ID: ", le.id, "time: ", time)
 
-	for _, behaviour := range le.behaviours {
-		behaviour.Act(time, le)
+	for _, Behaviour := range le.Behaviours {
+		Behaviour.Act(time, le)
 	}
+}
+
+// AddBehaviour adds a new behaviour
+func (le *LivingEntity) AddBehaviour(b Behaviour) {
+
+	le.Behaviours = append(le.Behaviours, b)
+
 }
